@@ -15,6 +15,7 @@ services:
       - MailerSend__ApiKey=${MAILERSEND_API_KEY}
       - MailerSend__FromEmail=${MAILERSEND_FROM_EMAIL}
       - MailerSend__FrontendBaseUrl=${FRONTEND_URL}
+      - Security__TotpEncryptionKey=${TOTP_ENCRYPTION_KEY}
     volumes:
       - dataprotection-keys:/root/.aspnet/DataProtection-Keys
 
