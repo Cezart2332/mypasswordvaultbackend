@@ -1,0 +1,24 @@
+# Build output
+bin/
+obj/
+
+# Sensitive config (contains connection strings, secrets)
+appsettings.Development.json
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Rider
+.idea/
+
+# Logs
+*.log
+logs/
+
+# Entity Framework migrations backup (optional, keep if you want migration history)
+Migrations/
+
+# Published output
+publish/

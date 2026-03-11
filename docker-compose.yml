@@ -1,0 +1,22 @@
+services:
+  backend:
+    image: cezarique/passbackend:latest
+    pull_policy: always
+    restart: unless-stopped
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=${DB_CONNECTION_STRING}
+      - Jwt__PrivateKey=${JWT_PRIVATE_KEY}
+      - Jwt__PublicKey=${JWT_PUBLIC_KEY}
+      - Jwt__Issuer=${JWT_ISSUER:-MyPasswordVault}
+      - Jwt__Audience=${JWT_AUDIENCE:-MyPasswordVault}
+      - Jwt__ExpiresInHours=${JWT_EXPIRES_IN_HOURS:-1}
+      - Cors__AllowedOrigins__0=${FRONTEND_URL}
+      - MailerSend__ApiKey=${MAILERSEND_API_KEY}
+      - MailerSend__FromEmail=${MAILERSEND_FROM_EMAIL}
+      - MailerSend__FrontendBaseUrl=${FRONTEND_URL}
+    volumes:
+      - dataprotection-keys:/root/.aspnet/DataProtection-Keys
+
+volumes:
+  dataprotection-keys:
